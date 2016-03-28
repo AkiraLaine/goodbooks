@@ -5,6 +5,8 @@
     <title>GoodBooks</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.17/css/bulma.min.css" type="text/css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script type="text/javascript" src="/controllers/home_controller.js"></script>
 </head>
 <body>
     <section class="hero is-fullheight">
@@ -25,7 +27,7 @@
                 </span>
                 <div class="header-right">
                     <a class="header-tab is-active" href="/">Home</a>
-                    <a class="header-tab" href="/login">Login</a>
+                    <a class="header-tab toggle" href="/login">Login</a>
                 </div>
               </div>
             </header>
@@ -68,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-                <a class="button is-outlined is-large">Login</a>
+                <a href="/login" class="button is-outlined is-large">Login</a>
             </div>
         </div>
     </section>

@@ -1,6 +1,7 @@
 'use strict';
 
 var path = process.cwd();
+var Users = require('../models/users.js');
 
 module.exports = function (app, passport) {
 
@@ -37,6 +38,14 @@ module.exports = function (app, passport) {
 	app.route("/getuser")
 		.get(isLoggedIn, function(req,res){
 			res.send(req.user)	
+		})
+		
+	app.route("/delete")
+		.get(function(req,res){
+			Users.find({"github.id": req.user.github.id}).remove().exec(function(err,data){
+				console.log(err);
+			});
+			res.redirect("/")
 		})
 		
 	app.route('/auth/github')
