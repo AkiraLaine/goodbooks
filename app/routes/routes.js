@@ -48,6 +48,14 @@ module.exports = function (app, passport) {
 			res.redirect("/")
 		})
 		
+	app.route("/api/addbook")
+		.post(function(req,res){
+			console.log(req.body)
+			Users.update({"github.id": req.user.github.id}, {$push: {"books": req.body}}).exec(function(err,data){
+				console.log(err)
+			});
+		})
+		
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
 

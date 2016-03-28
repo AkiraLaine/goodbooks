@@ -8,6 +8,7 @@ var User = new Schema({
 		id: String,
 		username: String,
 	},
+	books: []
 });
 
 module.exports = mongoose.model('User', User);
