@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile | GoodBooks</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.17/css/bulma.min.css" type="text/css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script type="text/javascript" src="/controllers/profile_controller.js"></script>
+</head>
+<body>
+    <header class="header">
+      <div class="container">
+        <!-- Left side -->
+        <div class="header-left">
+          <a class="header-item" href="#">
+            <h1 class="title">GoodBooks</h1>
+          </a>
+        </div>
+        <!-- Hamburger menu (on mobile) -->
+        <span class="header-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="header-right">
+            <a class="header-tab" href="/">Home</a>
+            <a class="header-tab" href="/logout">Logout</a>
+        </div>
+      </div>
+    </header>
+    <section class="hero is-dark">
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="title">Welcome <span id="username"></span></h1>
+            </div>
+        </div>
+    </section>
+    <div class="columns is-gapless">
+        <div class="column">
+            <section class="hero is-large">
+              <div class="hero-header">
+                  <div class="container">
+                      <h2 class="title">Books</h2>
+                      <p class="control has-addons">
+                        <input id="query" class="input" type="text" placeholder="Find a book." />
+                        <a id="search" class="button is-info">
+                          Search
+                        </a>
+                      </p>
+                  </div>
+              </div>
+              <div class="hero-content">
+                <div class="container">
+                    
+                </div>
+              </div>
+            </section>
+        </div>
+        <div class="column is-third">
+            <section class="hero is-large">
+              <div class="hero-header">
+                  <h2 class="title">Account</h2>
+              </div>
+              <div class="hero-content">
+                <div class="container">
+                    <a href="/delete" class="button is-danger is-large">Delete Account</a>
+                </div>
+              </div>
+            </section>
+        </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content is-centered">
+          Made by <a href="https://github.com/AkiraLaine" target="_target">Akira Laine</a>
+        </div>
+      </div>
+    </footer>
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-container">
+        <div class="modal-content">
+          <h1 class="title" style="color:white">Choose a book</h1>
+          <div id="results"></div>
+        </div>
+      </div>
+      <button class="modal-close"></button>
+    </div>
+</body>
+</html>
