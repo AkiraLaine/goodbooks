@@ -22,24 +22,29 @@ module.exports = function (app, passport) {
 		.get(function (req, res) {
 			res.sendFile(path + '/public/login.html');
 		});
-		
-	app.route("/signup")
-		.get(function(req,res){
-			res.sendFile(path + "/public/signup.html");
-		})
+	
+	app.route("/profile")
+		.get(isLoggedIn, function(req,res){
+			res.sendFile(path + "/public/profile.html")	
+		});
 
 	app.route('/logout')
 		.get(function (req, res) {
 			req.logout();
-			res.redirect('/login');
+			res.redirect('/');
 		});
+		
+	app.route("/getuser")
+		.get(isLoggedIn, function(req,res){
+			res.send(req.user)	
+		})
 		
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
 
 	app.route('/auth/github/callback')
 		.get(passport.authenticate('github', {
-			successRedirect: '/',
+			successRedirect: '/profile',
 			failureRedirect: '/login'
 		}));
 };
