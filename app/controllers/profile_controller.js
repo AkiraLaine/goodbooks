@@ -35,7 +35,9 @@ $(function() {
             }
               $(".book").on("click", function(){
                 var data = results[Number($(this).attr("key"))];
+                console.log(data)
                 $.post("/api/addbook", data);
+                $.post("/api/allbooks", data)
             })
           })
         }

@@ -25,6 +25,8 @@
         </span>
         <div class="header-right">
             <a class="header-tab" href="/">Home</a>
+            <a class="header-tab" href="/browse">Browse</a>
+            <a class="header-tab is-active" href="/profile">Profile</a>
             <a class="header-tab" href="/logout">Logout</a>
         </div>
       </div>
@@ -36,40 +38,20 @@
             </div>
         </div>
     </section>
-    <div class="columns is-gapless">
-        <div class="column">
-            <section class="hero is-large">
-              <div class="hero-header">
-                  <div class="container">
-                      <h2 class="title">Books</h2>
-                      <p class="control has-addons">
-                        <input id="query" class="input" type="text" placeholder="Find a book." />
-                        <a id="search" class="button is-info">
-                          Search
-                        </a>
-                      </p>
-                  </div>
-              </div>
-              <div class="hero-content">
-                <div class="container">
-                    <div id="display"></div>
-                </div>
-              </div>
-            </section>
-        </div>
-        <div class="column is-third">
-            <section class="hero is-large">
-              <div class="hero-header">
-                  <h2 class="title">Account</h2>
-              </div>
-              <div class="hero-content">
-                <div class="container">
-                    <a href="/delete" class="button is-danger is-large">Delete Account</a>
-                </div>
-              </div>
-            </section>
-        </div>
-    </div>
+        <section class="hero is-large">
+            <h2 class="title">Books</h2>
+              <p class="control has-addons">
+                <input id="query" class="input" type="text" placeholder="Find a book." />
+                <a id="search" class="button is-info">
+                  Search
+                </a>
+              </p>
+            <div class="hero-content">
+              <div class="container">
+                  <div id="display"></div>
+               </div>
+            </div>
+        </section>
     <footer class="footer">
       <div class="container">
         <div class="content is-centered">

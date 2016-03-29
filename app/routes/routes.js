@@ -2,6 +2,7 @@
 
 var path = process.cwd();
 var Users = require('../models/users.js');
+var Books = require("../models/books.js")
 
 module.exports = function (app, passport) {
 
@@ -28,6 +29,11 @@ module.exports = function (app, passport) {
 		.get(isLoggedIn, function(req,res){
 			res.sendFile(path + "/public/profile.html")	
 		});
+		
+	app.route("/browse")
+		.get(isLoggedIn, function(req,res){
+			res.sendFile(path + "/public/browse.html")
+		})
 
 	app.route('/logout')
 		.get(function (req, res) {
@@ -55,6 +61,23 @@ module.exports = function (app, passport) {
 				console.log(err)
 			});
 		})
+	
+	app.route("/api/allbooks")
+		.get(function(req,res){
+			var shelf = []
+			Books.find({}, function (err, books) {
+				res.json(books);
+			});
+		})
+		.post(function(req,res){
+			var newBook = new Books();
+			newBook.title = req.body.title;
+			newBook.authors = req.body.authors;
+			newBook.desc = req.body.desc;
+			newBook.pages = req.body.pages;
+			newBook.cover = req.body.cover;
+			newBook.save();
+		})	
 		
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
