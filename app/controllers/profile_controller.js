@@ -2,15 +2,17 @@ var user;
 var results = []
 
 $(function() {
-    $.get("/getuser", function(user) {
-        if (user !== undefined) {
-            $("#username").text(user.github.username)
-            $("#display").empty();
-            for(var i in user.books){
-                $("#display").append("<img src='" + user.books[i].cover + "' style='cursor:pointer'/>")
+    setInterval(function(){
+        $.get("/getuser", function(user) {
+            if (user !== undefined) {
+                $("#username").text(user.github.username)
+                $("#display").empty();
+                for(var i in user.books){
+                    $("#display").append("<img src='" + user.books[i].cover + "' style='cursor:pointer'/>")
+                }
             }
-        }
-    })
+        })
+    }, 1000)
     
     function convertAuthors(arr){
         return arr.join(",")
@@ -38,9 +40,9 @@ $(function() {
             console.log(results)
               $(".book").on("click", function(){
                 var data = results[$(this).attr("key")];
-                console.log(data)
                 $.post("/api/addbook", data);
                 $.post("/api/allbooks", data)
+                $(".modal").removeClass("is-active")
             })
           })
         }
