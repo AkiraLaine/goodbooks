@@ -56,7 +56,6 @@ module.exports = function (app, passport) {
 		
 	app.route("/api/addbook")
 		.post(function(req,res){
-			console.log(req.body)
 			Users.update({"github.id": req.user.github.id}, {$push: {"books": req.body}}).exec(function(err,data){
 				console.log(err)
 			});
@@ -64,7 +63,6 @@ module.exports = function (app, passport) {
 	
 	app.route("/api/allbooks")
 		.get(function(req,res){
-			var shelf = []
 			Books.find({}, function (err, books) {
 				res.json(books);
 			});
@@ -76,6 +74,7 @@ module.exports = function (app, passport) {
 			newBook.desc = req.body.desc;
 			newBook.pages = req.body.pages;
 			newBook.cover = req.body.cover;
+			newBook.user = req.body.user;
 			newBook.save();
 		})	
 		
