@@ -9,7 +9,8 @@ var User = new Schema({
 		username: String,
 	},
 	books: [],
-	notifications: []
+	notifications: [],
+	trades: []
 });
 
 module.exports = mongoose.model('User', User);

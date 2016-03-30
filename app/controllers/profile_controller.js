@@ -1,6 +1,7 @@
 var userInfo;
 var results = []
 var notifications = [];
+var trades = []
 
 $(function() {
     $.get("/getuser", function(user) {
@@ -20,8 +21,17 @@ $(function() {
             } else {
                 $("#notifications").parents(".is-warning").css("display", "none")
             }
+            if(user.trades.length !== 0){
+                for(var i in user.trades){
+                    trades.push(user.trades[i])
+                    $("#trades").append("<h2 class='title'>Your trade request for " + user.trades[i].title + " has been " + user.trades[i].trade + "</h2><a class='button is-danger dismiss' key='" + i + "'>Dismiss</a>");
+                }
+            } else {
+                $("#trades").parents(".is-primary").css("display", "none")
+            }
             $(".accept").on("click", acceptTrade);
             $(".decline").on("click", declineTrade)
+            $(".dismiss").on("click", removeTrade)
         }
     })
     
@@ -76,6 +86,14 @@ $(function() {
         var data = notifications[key];
         console.log(data);
         $.post("/api/trade/decline", data)
+        window.location.reload();
+    }
+    
+    function removeTrade(){
+        var key = $(this).attr("key")
+        var data = trades[key];
+        console.log(data);
+        $.post("/api/trade/remove", data)
         window.location.reload();
     }
     

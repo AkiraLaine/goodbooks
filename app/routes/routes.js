@@ -90,20 +90,35 @@ module.exports = function (app, passport) {
 		
 	app.route("/api/trade/accept")
 		.post(function(req,res){
-			var book = req.body;
+			var title = req.body.title;
 			var user = req.body.user;
-			console.log(user, book)
-			Users.update({"github.username": user}, {$pull: {"notifications": book}}).exec(function(err,data){
+			var rUser = req.body.requestedBy;
+			Users.update({"github.username": rUser}, {$push: {"trades": {trade: "accepted", title: title}}}).exec(function(err,data){
+				console.log(err)
+			})
+			Users.update({"github.username": user}, {$pull: {"notifications": req.body}}).exec(function(err,data){
 				console.log(err)
 			});
 		})
 		
 	app.route("/api/trade/decline")
 		.post(function(req,res){
-			var book = req.body;
+			var title = req.body.title;
 			var user = req.body.user;
-			console.log(user, book)
-			Users.update({"github.username": user}, {$pull: {"notifications": book}}).exec(function(err,data){
+			var rUser = req.body.requestedBy;
+			Users.update({"github.username": rUser}, {$push: {"trades": {trade: "declined", title: title}}}).exec(function(err,data){
+				console.log(err)
+			})
+			Users.update({"github.username": user}, {$pull: {"notifications": req.body}}).exec(function(err,data){
+				console.log(err)
+			});
+		})
+		
+	app.route("/api/trade/remove")
+		.post(function(req,res){
+			var user = req.user.github.username;
+			var data = req.body;
+			Users.update({"github.username": user}, {$pull: {"trades": data}}).exec(function(err,data){
 				console.log(err)
 			});
 		})
