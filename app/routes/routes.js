@@ -78,6 +78,36 @@ module.exports = function (app, passport) {
 			newBook.save();
 		})	
 		
+	app.route("/api/trade")
+		.post(function(req,res){
+			var book = req.body;
+			var user = req.body.user;
+			console.log(user, book)
+			Users.update({"github.username": user}, {$push: {"notifications": book}}).exec(function(err,data){
+				console.log(err)
+			});
+		})
+		
+	app.route("/api/trade/accept")
+		.post(function(req,res){
+			var book = req.body;
+			var user = req.body.user;
+			console.log(user, book)
+			Users.update({"github.username": user}, {$pull: {"notifications": book}}).exec(function(err,data){
+				console.log(err)
+			});
+		})
+		
+	app.route("/api/trade/decline")
+		.post(function(req,res){
+			var book = req.body;
+			var user = req.body.user;
+			console.log(user, book)
+			Users.update({"github.username": user}, {$pull: {"notifications": book}}).exec(function(err,data){
+				console.log(err)
+			});
+		})
+		
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
 

@@ -8,7 +8,8 @@ var User = new Schema({
 		id: String,
 		username: String,
 	},
-	books: []
+	books: [],
+	notifications: []
 });
 
 module.exports = mongoose.model('User', User);

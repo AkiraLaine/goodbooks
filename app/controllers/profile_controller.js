@@ -1,5 +1,6 @@
 var userInfo;
 var results = []
+var notifications = [];
 
 $(function() {
     $.get("/getuser", function(user) {
@@ -7,11 +8,23 @@ $(function() {
             userInfo = user;
             $("#username").text(user.github.username)
             $("#display").empty();
+            $("#notifications").empty()
             for(var i in user.books){
                 $("#display").append("<img src='" + user.books[i].cover + "' style='cursor:pointer'/>")
             }
+            if(user.notifications.length !== 0){
+                for(var i in user.notifications){
+                    notifications.push(user.notifications[i])
+                    $("#notifications").append("<h2 class='title'>" + user.notifications[i].user + " wants to trade " + user.notifications[i].title + "!</h2><a class='button is-success accept' key='" + i + "'>Accept</a><a class='button is-danger decline' key='" + i + "'>Decline</a>");
+                }
+            } else {
+                $("#notifications").parents(".is-warning").css("display", "none")
+            }
+            $(".accept").on("click", acceptTrade);
+            $(".decline").on("click", declineTrade)
         }
     })
+    
     
     function convertAuthors(arr){
         return arr.join(",")
@@ -48,6 +61,22 @@ $(function() {
              })
           })
         }
+    }
+    
+    function acceptTrade(){
+        var key = $(this).attr("key")
+        var data = notifications[key];
+        console.log(data);
+        $.post("/api/trade/accept", data)
+        window.location.reload();
+    }
+    
+    function declineTrade(){
+        var key = $(this).attr("key")
+        var data = notifications[key];
+        console.log(data);
+        $.post("/api/trade/decline", data)
+        window.location.reload();
     }
     
     $("#search").on("click", getBooks)
