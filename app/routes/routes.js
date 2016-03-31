@@ -54,6 +54,16 @@ module.exports = function (app, passport) {
 			res.redirect("/")
 		})
 		
+	app.route("/api/user/info")
+		.post(function(req,res){
+			Users.findOne({"github.id": req.user.github.id}, function(err,user){
+				user.userinfo.fullName = req.body.fullName;
+				user.userinfo.city = req.body.city;
+				user.userinfo.state = req.body.state;
+				user.save();
+			});
+		})
+		
 	app.route("/api/addbook")
 		.post(function(req,res){
 			Users.update({"github.id": req.user.github.id}, {$push: {"books": req.body}}).exec(function(err,data){

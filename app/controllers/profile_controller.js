@@ -44,7 +44,7 @@ $(function() {
         if(e.which === 13 || e.which === 1){
           $.get("https://www.googleapis.com/books/v1/volumes?q=" + $("#query").val(), function(data) {
             console.log(data);
-            $(".modal").addClass("is-active")
+            $(".books").addClass("is-active")
             $("#results").empty();
             results = [];
             var count = 0;
@@ -99,6 +99,14 @@ $(function() {
     
     $("#search").on("click", getBooks)
     $("#query").on("keyup", getBooks);
+    
+    $("#settings").on("click", function(){
+        $(".settings").addClass("is-active")    });
+    
+    $("#submit").on("click", function() {
+        var data = {fullName: $("#full-name").val(), city: $("#city").val(), state: $("#state").val()};
+        $.post("/api/user/info", data)
+    })
     
     $(".modal-close").on("click", function(){$(".modal").removeClass("is-active")})
 })

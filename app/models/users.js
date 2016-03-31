@@ -8,6 +8,11 @@ var User = new Schema({
 		id: String,
 		username: String,
 	},
+	userinfo: {
+		fullName: String,
+		city: String,
+		state: String,	
+	},
 	books: [],
 	notifications: [],
 	trades: []

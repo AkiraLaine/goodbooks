@@ -65,6 +65,7 @@
             <div class="hero-content">
               <div class="container">
                   <div id="display"></div>
+                  <a id="settings" class="button is-dark">Update Info</a>
                </div>
             </div>
         </section>
@@ -75,13 +76,38 @@
         </div>
       </div>
     </footer>
-    <div class="modal">
+    <div class="modal books">
       <div class="modal-background"></div>
       <div class="modal-container">
         <div class="modal-content">
           <h1 class="title" style="color:white">Choose a book</h1>
           <div id="results"></div>
-          <a id="submit" class="button is-primary is-large">Submit</a>
+        </div>
+      </div>
+      <button class="modal-close"></button>
+    </div>
+    <div class="modal settings">
+      <div class="modal-background"></div>
+      <div class="modal-container">
+        <div class="modal-content">
+          <h1 class="title" style="color:white">Hello Katya. You can't close this, can you. (evil laugh)</h1> 
+          <p class="control has-icon">
+            <input id="full-name" class="input" type="text" placeholder="Full Name">
+            <i class="fa fa-user"></i>
+          </p>
+          <p class="control has-icon">
+            <input id="city" class="input" type="text" placeholder="City">
+            <i class="fa fa-location-arrow"></i>
+          </p>
+          <p class="control has-icon">
+            <input id="state" class="input" type="text" placeholder="State">
+            <i class="fa fa-map"></i>
+          </p>
+          <p class="control">
+            <button id="submit" class="button is-success">
+              Submit
+            </button>
+          </p>
         </div>
       </div>
       <button class="modal-close"></button>
