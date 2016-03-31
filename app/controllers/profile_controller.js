@@ -16,7 +16,7 @@ $(function() {
             if(user.notifications.length !== 0){
                 for(var i in user.notifications){
                     notifications.push(user.notifications[i])
-                    $("#notifications").append("<div class='notification'>" + user.notifications[i].user + " wants to trade " + user.notifications[i].title + ".<br><a class='button is-success is-small accept' key='" + i + "'>Accept</a><a class='button is-danger is-small decline' key='" + i + "'>Decline</a></div>");
+                    $("#notifications").append("<div class='notification'>" + user.notifications[i].requestedBy + " wants to trade " + user.notifications[i].title + ".<br><a class='button is-success is-small accept' key='" + i + "'>Accept</a><a class='button is-danger is-small decline' key='" + i + "'>Decline</a></div>");
                 }
             } else {
                 $("#notifications").html("<em><p class='subtitle'>None.</p></em>")
