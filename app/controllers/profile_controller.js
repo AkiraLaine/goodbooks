@@ -16,22 +16,22 @@ $(function() {
             if(user.notifications.length !== 0){
                 for(var i in user.notifications){
                     notifications.push(user.notifications[i])
-                    $("#notifications").append("<h2 class='title'>" + user.notifications[i].user + " wants to trade " + user.notifications[i].title + "!</h2><a class='button is-success accept' key='" + i + "'>Accept</a><a class='button is-danger decline' key='" + i + "'>Decline</a>");
+                    $("#notifications").append("<div class='notification'>" + user.notifications[i].user + " wants to trade " + user.notifications[i].title + ".<br><a class='button is-success is-small accept' key='" + i + "'>Accept</a><a class='button is-danger is-small decline' key='" + i + "'>Decline</a></div>");
                 }
             } else {
-                $("#notifications").parents(".is-warning").css("display", "none")
+                $("#notifications").html("<em><p class='subtitle'>None.</p></em>")
             }
             if(user.trades.length !== 0){
                 for(var i in user.trades){
                     trades.push(user.trades[i])
-                    $("#trades").append("<h2 class='title'>Your trade request for " + user.trades[i].title + " has been " + user.trades[i].trade + "</h2><a class='button is-danger dismiss' key='" + i + "'>Dismiss</a>");
+                    $("#trades").append("<div class='notification'><button class='delete' key='" + i + "'></button>Your trade request for " + user.trades[i].title + " has been " + user.trades[i].trade + ".</div>");
                 }
             } else {
-                $("#trades").parents(".is-primary").css("display", "none")
+                $("#trades").html("<em><p class='subtitle'>None.</p></em>")
             }
             $(".accept").on("click", acceptTrade);
             $(".decline").on("click", declineTrade)
-            $(".dismiss").on("click", removeTrade)
+            $(".delete").on("click", removeTrade)
         }
     })
     
@@ -101,11 +101,13 @@ $(function() {
     $("#query").on("keyup", getBooks);
     
     $("#settings").on("click", function(){
-        $(".settings").addClass("is-active")    });
+        $(".settings").addClass("is-active")    
+    });
     
     $("#submit").on("click", function() {
         var data = {fullName: $("#full-name").val(), city: $("#city").val(), state: $("#state").val()};
         $.post("/api/user/info", data)
+        $(".modal").removeClass("is-active")
     })
     
     $(".modal-close").on("click", function(){$(".modal").removeClass("is-active")})

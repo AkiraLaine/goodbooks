@@ -24,6 +24,12 @@
       height: 200px;
       margin-bottom: 80px;
     }
+    .book:hover{
+      opacity: 0.7;
+    }
+    .accept {
+      margin-right: 5px;
+    }
   </style>
 </head>
 
@@ -50,29 +56,30 @@
       </div>
     </div>
   </header>
-  <!--<h1 class="title">Welcome <span id="username"></span></h1>-->
-  <section class="hero is-warning">
-    <div class="hero-content">
-      <div id="notifications" class="container">
-
-      </div>
-    </div>
-  </section>
-  <section class="hero is-primary">
-    <div class="hero-content">
-      <div id="trades" class="container">
-
-      </div>
-    </div>
-  </section>
   <section class="section">
-    <div class="container">
-      <p class="control has-addons">
-        <input id="query" class="input" type="text" placeholder="Search for a book to add..." />
-        <a id="search" class="button is-info">Search</a>
-      </p>
-      <p class="subtitle">Your Books</p>
-      <div id="display"></div>
+    <p style="text-align:center" class="subtitle is-3">Welcome <span id="username"></span></p>
+    <div class="columns">
+      <div class="column is-10">
+        <div class="container">
+          <p class="control has-addons">
+            <input id="query" class="input" type="text" placeholder="Search for a book to add..." />
+            <a id="search" class="button is-info">Search</a>
+          </p>
+          <p class="subtitle">Your Books</p>
+          <div id="display"></div>
+        </div>
+      </div>
+      <div class="column" style="clear: both; margin-right: 20px;">
+        <div class="container">
+          <h3 class="title">Other</h3>
+          <a id="settings" class="button is-primary">Update Info</a>
+          <a href="/api/delete" class="button is-danger">Delete Account</a>
+          <h3 class="title" style="margin-top: 20px">Notifications</h3>
+          <div id="notifications"></div>
+          <h3 class="title" style="margin-top: 20px">Trade Responses</h3>
+          <div id="trades"></div>
+        </div>
+      </div>
     </div>
   </section>
   <footer class="footer">
@@ -97,24 +104,26 @@
     <div class="modal-background"></div>
     <div class="modal-container">
       <div class="modal-content">
-        <h1 class="title" style="color:white">Hello Katya. You can't close this, can you. (evil laugh)</h1>
-        <p class="control has-icon">
-          <input id="full-name" class="input" type="text" placeholder="Full Name">
-          <i class="fa fa-user"></i>
-        </p>
-        <p class="control has-icon">
-          <input id="city" class="input" type="text" placeholder="City">
-          <i class="fa fa-location-arrow"></i>
-        </p>
-        <p class="control has-icon">
-          <input id="state" class="input" type="text" placeholder="State">
-          <i class="fa fa-map"></i>
-        </p>
-        <p class="control">
-          <button id="submit" class="button is-success">
-            Submit
-          </button>
-        </p>
+        <div class="box">
+          <h1 class="title">Update your settings</h1>
+          <p class="control has-icon">
+            <input id="full-name" class="input" type="text" placeholder="Full Name">
+            <i class="fa fa-user"></i>
+          </p>
+          <p class="control has-icon">
+            <input id="city" class="input" type="text" placeholder="City">
+            <i class="fa fa-location-arrow"></i>
+          </p>
+          <p class="control has-icon">
+            <input id="state" class="input" type="text" placeholder="State">
+            <i class="fa fa-map"></i>
+          </p>
+          <p class="control">
+            <button id="submit" class="button is-success">
+              Submit
+            </button>
+          </p>
+        </div>
       </div>
     </div>
     <button class="modal-close"></button>

@@ -46,7 +46,7 @@ module.exports = function (app, passport) {
 			res.send(req.user)	
 		})
 		
-	app.route("/delete")
+	app.route("/api/delete")
 		.get(function(req,res){
 			Users.find({"github.id": req.user.github.id}).remove().exec(function(err,data){
 				console.log(err);
