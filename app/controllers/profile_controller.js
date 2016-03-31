@@ -11,7 +11,7 @@ $(function() {
             $("#display").empty();
             $("#notifications").empty()
             for(var i in user.books){
-                $("#display").append("<img src='" + user.books[i].cover + "' style='cursor:pointer'/>")
+                $("#display").append("<div class='profile-book'><img src='" + user.books[i].cover + "' style='cursor:pointer'/><p>" + user.books[i].title + "</p><p>" + user.books[i].authors + "</p></div>")
             }
             if(user.notifications.length !== 0){
                 for(var i in user.notifications){
@@ -55,7 +55,7 @@ $(function() {
                         desc: data.items[i].volumeInfo.description, pages: data.items[i].volumeInfo.pageCount, 
                         cover: data.items[i].volumeInfo.imageLinks.thumbnail
                     })
-                    $("#results").append("<img class='book' src='" + book.imageLinks.thumbnail + "' key='" + count + "' style='cursor:pointer'/>")
+                    $("#results").append("<img class='book' src='" + book.imageLinks.thumbnail + "' key='" + count + "' style='cursor:pointer;margin: 5px 5px 0'/>")
                     count++
                 }
             }

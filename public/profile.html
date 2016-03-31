@@ -1,116 +1,124 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Profile | GoodBooks</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.17/css/bulma.min.css" type="text/css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-    <script type="text/javascript" src="/controllers/profile_controller.js"></script>
+  <meta charset="UTF-8">
+  <title>Profile | GoodBooks</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.17/css/bulma.min.css" type="text/css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+  <script type="text/javascript" src="/controllers/profile_controller.js"></script>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    section {
+      flex: 1;
+    }
+    .profile-book{
+      float: left;
+      width: 150px;
+      text-align: center;
+      height: 200px;
+      margin-bottom: 80px;
+    }
+  </style>
 </head>
+
 <body>
-    <header class="header">
-      <div class="container">
-        <!-- Left side -->
-        <div class="header-left">
-          <a class="header-item" href="#">
-            <h1 class="title">GoodBooks</h1>
-          </a>
-        </div>
-        <!-- Hamburger menu (on mobile) -->
-        <span class="header-toggle">
+  <header class="header">
+    <div class="container">
+      <!-- Left side -->
+      <div class="header-left">
+        <a class="header-item" href="#">
+          <h1 class="title">GoodBooks</h1>
+        </a>
+      </div>
+      <!-- Hamburger menu (on mobile) -->
+      <span class="header-toggle">
           <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <div class="header-right">
-            <a class="header-tab" href="/">Home</a>
-            <a class="header-tab" href="/browse">Browse</a>
-            <a class="header-tab is-active" href="/profile">Profile</a>
-            <a class="header-tab" href="/logout">Logout</a>
-        </div>
+      <span></span>
+      <span></span>
+      </span>
+      <div class="header-right">
+        <a class="header-tab" href="/">Home</a>
+        <a class="header-tab" href="/browse">Browse</a>
+        <a class="header-tab is-active" href="/profile">Profile</a>
+        <a class="header-tab" href="/logout">Logout</a>
       </div>
-    </header>
-    <section class="hero is-dark">
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="title">Welcome <span id="username"></span></h1>
-            </div>
-        </div>
-    </section>
-    <section class="hero is-warning">
-      <div class="hero-content">
-        <div id="notifications" class="container">
-          
-        </div>
-      </div>
-    </section>
-    <section class="hero is-primary">
-      <div class="hero-content">
-        <div id="trades" class="container">
-          
-        </div>
-      </div>
-    </section>
-        <section class="hero is-large">
-          <div class="container">
-            <h2 class="title">Books</h2>
-              <p class="control has-addons">
-                <input id="query" class="input" type="text" placeholder="Find a book." />
-                <a id="search" class="button is-info">
-                  Search
-                </a>
-              </p>
-          </div>
-            <div class="hero-content">
-              <div class="container">
-                  <div id="display"></div>
-                  <a id="settings" class="button is-dark">Update Info</a>
-               </div>
-            </div>
-        </section>
-    <footer class="footer">
-      <div class="container">
-        <div class="content is-centered">
-          Made by <a href="https://github.com/AkiraLaine" target="_target">Akira Laine</a>
-        </div>
-      </div>
-    </footer>
-    <div class="modal books">
-      <div class="modal-background"></div>
-      <div class="modal-container">
-        <div class="modal-content">
-          <h1 class="title" style="color:white">Choose a book</h1>
-          <div id="results"></div>
-        </div>
-      </div>
-      <button class="modal-close"></button>
     </div>
-    <div class="modal settings">
-      <div class="modal-background"></div>
-      <div class="modal-container">
-        <div class="modal-content">
-          <h1 class="title" style="color:white">Hello Katya. You can't close this, can you. (evil laugh)</h1> 
-          <p class="control has-icon">
-            <input id="full-name" class="input" type="text" placeholder="Full Name">
-            <i class="fa fa-user"></i>
-          </p>
-          <p class="control has-icon">
-            <input id="city" class="input" type="text" placeholder="City">
-            <i class="fa fa-location-arrow"></i>
-          </p>
-          <p class="control has-icon">
-            <input id="state" class="input" type="text" placeholder="State">
-            <i class="fa fa-map"></i>
-          </p>
-          <p class="control">
-            <button id="submit" class="button is-success">
-              Submit
-            </button>
-          </p>
-        </div>
+  </header>
+  <!--<h1 class="title">Welcome <span id="username"></span></h1>-->
+  <section class="hero is-warning">
+    <div class="hero-content">
+      <div id="notifications" class="container">
+
       </div>
-      <button class="modal-close"></button>
     </div>
+  </section>
+  <section class="hero is-primary">
+    <div class="hero-content">
+      <div id="trades" class="container">
+
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <p class="control has-addons">
+        <input id="query" class="input" type="text" placeholder="Search for a book to add..." />
+        <a id="search" class="button is-info">Search</a>
+      </p>
+      <p class="subtitle">Your Books</p>
+      <div id="display"></div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content is-centered">
+        <p>I'm Akira. The developer who made this app. You can checkout my other projects on <a href="https://github.com/AkiraLaine" target="_target">GitHub</a></p>
+        <p>&copy; GoodBooks 2016</p>
+      </div>
+    </div>
+  </footer>
+  <div class="modal books">
+    <div class="modal-background"></div>
+    <div class="modal-container">
+      <div class="modal-content">
+        <h1 class="title" style="color:white">Choose a book</h1>
+        <div id="results"></div>
+      </div>
+    </div>
+    <button class="modal-close"></button>
+  </div>
+  <div class="modal settings">
+    <div class="modal-background"></div>
+    <div class="modal-container">
+      <div class="modal-content">
+        <h1 class="title" style="color:white">Hello Katya. You can't close this, can you. (evil laugh)</h1>
+        <p class="control has-icon">
+          <input id="full-name" class="input" type="text" placeholder="Full Name">
+          <i class="fa fa-user"></i>
+        </p>
+        <p class="control has-icon">
+          <input id="city" class="input" type="text" placeholder="City">
+          <i class="fa fa-location-arrow"></i>
+        </p>
+        <p class="control has-icon">
+          <input id="state" class="input" type="text" placeholder="State">
+          <i class="fa fa-map"></i>
+        </p>
+        <p class="control">
+          <button id="submit" class="button is-success">
+            Submit
+          </button>
+        </p>
+      </div>
+    </div>
+    <button class="modal-close"></button>
+  </div>
 </body>
+
 </html>
